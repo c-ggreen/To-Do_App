@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItem from './ListItem';
 
 class Todo extends Component {
     constructor(){
@@ -41,11 +42,11 @@ class Todo extends Component {
                         this.changeUserInput(event.target.value)
                     }}/>
 
-                <button onClick={()=>this.addToList(this.state.userInput)}>Add Todo to the List</button>
+                <button onClick={()=>this.addToList(this.state.userInput)}>Add to the List</button>
                 
                 <ul>
-                    {this.state.list.map((itemInTheList, i)=>{
-                        return <li key={i}>{itemInTheList}</li>
+                    {this.state.list.map((item, i)=>{
+                        return <ListItem key={i} item={item}/>
                     })}
 
                 </ul>
