@@ -48,7 +48,6 @@ class Todo extends Component {
                     {this.state.list.map((item, i)=>{
                         return <ListItem key={i} item={item}/>
                     })}
-
                 </ul>
 
             </div>
