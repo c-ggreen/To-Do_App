@@ -6,8 +6,8 @@ class Todo extends Component {
         super()
         this.state={
             userInput:'',
-            list: []
-
+            list: [],
+            mounted: true
         }
     }
 
@@ -29,6 +29,17 @@ class Todo extends Component {
         })
     }
 
+    resetMount = () =>{
+        this.setState({
+            mounted: true
+        })
+    }
+
+    deleteItem= () =>{
+        this.setState({
+            mounted:false
+        })
+    }
 
     render() {
         return (
@@ -37,6 +48,7 @@ class Todo extends Component {
                 
                 <input type="text" 
                 value={this.state.userInput}
+                onClick={()=>this.resetMount}
                 onChange={
                     (event)=>{
                         this.changeUserInput(event.target.value)
@@ -46,7 +58,7 @@ class Todo extends Component {
                 
                 <ul>
                     {this.state.list.map((item, i)=>{
-                        return <ListItem key={i} item={item}/>
+                        return this.state.mounted ? <ListItem key={i} item={item} deleteItem={this.deleteItem} /> : null
                     })}
                 </ul>
 
